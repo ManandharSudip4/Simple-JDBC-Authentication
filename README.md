@@ -44,3 +44,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 #### Community Links i followed to solve this issues
 - [JDBC Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-schema)
 - [MVCMatchBuilder issue](https://github.com/spring-projects/spring-security/issues/13568)
+
+
+
+## Further More
+    So i commented the some lines inside UserDetailsManager Bean which creates the new user
+    and created the user from the SQL file located at [resources/db/schema.sql]
+
+    This is how we do when we want to create users using SQL.
+
+    Also, specified script[schema.sql] to be used to create a table and insert the user instead 
+    of creating default tables and inserting users from USerDetailsManager.
+
+    This is how we customize the table we want to create.
+    

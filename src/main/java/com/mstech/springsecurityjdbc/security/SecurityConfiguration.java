@@ -30,29 +30,30 @@ public class SecurityConfiguration {
   DataSource dataSource() {
     return new EmbeddedDatabaseBuilder()
       .setType(EmbeddedDatabaseType.H2)
-      .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
-      // .addScript("db/schema.sql")
+      // .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
+      .addScript("db/schema.sql")
       .build();
   }
 
-  // Authentication
+  // Authentication/ Creating a user 
+  // This bean can be modified(commennted) like below if we have a user creating query inside the SQL file.
   @Bean
   UserDetailsManager users(DataSource dataSource) {
-    UserDetails user = User
-      .builder()
-      .username("user")
-      .password("user")
-      .roles("USER")
-      .build();
-    UserDetails admin = User
-      .builder()
-      .username(myAdmin)
-      .password(myAdmin)
-      .roles("USER", roleA)
-      .build();
+    // UserDetails user = User
+    //   .builder()
+    //   .username("user")
+    //   .password("user")
+    //   .roles("USER")
+    //   .build();
+    // UserDetails admin = User
+    //   .builder()
+    //   .username(myAdmin)
+    //   .password(myAdmin)
+    //   .roles("USER", roleA)
+    //   .build();
     JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-    users.createUser(user);
-    users.createUser(admin);
+    // users.createUser(user);
+    // users.createUser(admin);
     return users;
   }
 
